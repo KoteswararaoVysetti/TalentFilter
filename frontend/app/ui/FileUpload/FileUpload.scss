@@ -1,0 +1,13 @@
+.filename-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  width: 300px;
+  height: 60px;
+  padding: 8px;
+  .file-name {
+    width: 270px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
