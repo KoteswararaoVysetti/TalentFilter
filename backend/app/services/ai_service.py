@@ -1,5 +1,6 @@
 import os
 from openai import OpenAI
+import json
 
 token = os.environ["OPENAI_API_KEY"]
 endpoint = "https://models.inference.ai.azure.com"
@@ -10,17 +11,21 @@ client = OpenAI(
     api_key=token,
 )
 
-def get_ai_response(prompt: str) -> str:
+def get_ai_response(role: str, skills: str, resumeData: str) -> str:
     try:
+        userData = resumeData.split(' ')
+        if len(userData) > 3000 :
+            userData = userData[:3000]
+        userData = ' '.join(userData)
         response = client.chat.completions.create(
             messages=[
                 {
                     "role": "system",
-                    "content": "You are an Highly skilled HR and Talent Aquisition lead. You need to scan the data of a resume share by an applicant for a role in your company. You are also highly skilled technical person. Process the resume data and review the application",
+                    "content": f"You are an Highly skilled HR and Talent Aquisition lead. You need to scan the data of a resume share by an applicant for a {role} role in your company. You are also highly skilled technical person with skills {skills}." + "Provide only a json response that can be converted into object easily in python(example: { \"key1\" : \"value1\", \"key2\" : \"value2\"}) with properties: matching score, matched skills, missed skills, additional skills. Note: don't mention the name 'json' in response",
                 },
                 {
                     "role": "user",
-                    "content": f"{prompt}",
+                    "content": f"{userData}",
                 }
             ],
             temperature=1.0,
@@ -28,6 +33,6 @@ def get_ai_response(prompt: str) -> str:
             max_tokens=1000,
             model=model_name
         )
-        return response.choices[0].message.content
+        return json.loads(response.choices[0].message.content)
     except Exception as e:
         return str(e)
