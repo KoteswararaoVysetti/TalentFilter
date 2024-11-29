@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import baseApi from "./RTKQueryServices/baseApiService";
+import resultsSliceReducer from "./features/ResultsSlice";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: { [baseApi.reducerPath]: baseApi.reducer },
+    reducer: {
+      [baseApi.reducerPath]: baseApi.reducer,
+      results: resultsSliceReducer,
+    },
   });
 };
 
