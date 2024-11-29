@@ -4,8 +4,15 @@ import ProgressBar from "../ui/ProgressBar";
 import CustomAccordion from "../ui/Accordion";
 import { useAppSelector } from "@/lib/hooks";
 import { RootState } from "@/lib/store";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
 export default function Page() {
   const data = useAppSelector((state: RootState) => state.results).value;
+  useEffect(() => {
+    if (!data.matching_score) {
+      redirect("/");
+    }
+  }, [data]);
   return (
     <div className="wrapper flex flex-col justify-center items-center bg-white m-2.5">
       <div className="container w-2/4	h-4/5	flex h-full w-full bg-white gap-10 pt-40">
