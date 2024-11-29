@@ -10,6 +10,7 @@ export default function Dropdown(props: any) {
   const [value, setValue] = useState<string>("");
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);
+    props?.onChange(value);
   };
 
   return (

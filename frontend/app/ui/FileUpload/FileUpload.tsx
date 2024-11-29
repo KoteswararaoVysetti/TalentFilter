@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import CancelIcon from "../../assets/svg/close.svg";
 import "./FileUpload.scss";
 
-export const FileUpload = () => {
+export const FileUpload = (props: any) => {
   const [file, setFile] = useState<string>();
   const [fileName, setFileName] = useState<string>("");
   const inputRef = useRef(null);
@@ -23,6 +23,7 @@ export const FileUpload = () => {
             let blobUrl = URL.createObjectURL(files[0]);
             setFile(blobUrl);
             setFileName(files[0]?.name);
+            props?.onChange(files[0]);
           }
         }}
       />
