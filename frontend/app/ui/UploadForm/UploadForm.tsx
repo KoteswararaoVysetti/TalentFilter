@@ -4,11 +4,13 @@ import Dropdown from "../Dropdown";
 import { FileUpload } from "../FileUpload/FileUpload";
 import { MultiSelectDropdown } from "../MultiSelectDropdown";
 import { useRouter } from "next/navigation";
+import { updateResults } from "@/lib/features/ResultsSlice";
+import { useAppDispatch } from "@/lib/hooks";
 import "./UploadForm.scss";
 
 export default function UploadForm() {
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
   const formdata = new FormData();
   const uploadResume = async (formdata: FormData) => {
     const requestOptions = {
@@ -64,14 +66,17 @@ export default function UploadForm() {
               list={[{ id: 1, value: "Full stack Developer" }]}
               onChange={handleOnChange}
             />
-            <FileUpload onChange={handleFileChange}/>
+            <FileUpload onChange={handleFileChange} />
           </div>
           <Button
             variant="contained"
             sx={{ width: "300px", margin: "8px", background: "#2fbea9" }}
             onClick={async () => {
               var response = await uploadResume(formdata);
-              router.push("/Results");
+              if (response) {
+                dispatch(updateResults(response));
+                router.push("/Results");
+              }
             }}
           >
             Submit
