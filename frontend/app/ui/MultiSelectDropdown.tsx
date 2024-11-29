@@ -26,6 +26,7 @@ export function MultiSelectDropdown(props: any) {
       target: { value },
     } = event;
     setValue(typeof value === "string" ? value.split(",") : value);
+    props?.onChange(value);
   };
 
   return (
