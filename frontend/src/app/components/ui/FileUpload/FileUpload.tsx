@@ -1,10 +1,10 @@
 "use client";
 import Button from "@mui/material/Button";
 import { useRef, useState } from "react";
-import CancelIcon from "../../assets/svg/close.svg";
+import CancelIcon from "@/src/assets/svg/close.svg"
 import "./FileUpload.scss";
 
-export const FileUpload = (props: any) => {
+export const FileUpload = (props: {onChange?: (value:File) => any}) => {
   const [file, setFile] = useState<string>();
   const [fileName, setFileName] = useState<string>("");
   const inputRef = useRef(null);
@@ -18,7 +18,7 @@ export const FileUpload = (props: any) => {
         className="hidden"
         accept=".pdf"
         onChange={(e) => {
-          let files = e.target.files;
+          let files = e.target.files; 
           if (files && files[0]) {
             let blobUrl = URL.createObjectURL(files[0]);
             setFile(blobUrl);

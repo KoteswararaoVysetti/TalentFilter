@@ -1,9 +1,9 @@
 "use client";
-import "./Results.scss";
-import ProgressBar from "../ui/ProgressBar";
-import CustomAccordion from "../ui/Accordion";
-import { useAppSelector } from "@/lib/hooks";
-import { RootState } from "@/lib/store";
+import "./style.scss";
+import ProgressBar from "../components/ui/ProgressBar";
+import CustomAccordion from "../components/ui/Accordion";
+import { useAppSelector } from "@/src/lib/hooks";
+import { RootState } from "@/src/lib/store";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
 export default function Page() {
