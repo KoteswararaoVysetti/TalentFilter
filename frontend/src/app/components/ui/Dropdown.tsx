@@ -9,8 +9,9 @@ import { useState } from "react";
 export default function Dropdown(props: any) {
   const [value, setValue] = useState<string>("");
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value as string);
-    props?.onChange(value);
+    const val = event.target.value as string;
+    setValue(val);
+    props?.onChange(val);
   };
 
   return (
@@ -30,9 +31,6 @@ export default function Dropdown(props: any) {
             label={props?.label}
             onChange={handleChange}
           >
-            {props?.list?.map((item: any) => {
-              <MenuItem value={item?.id}>{item?.value}</MenuItem>;
-            })}
             {props?.list &&
               props?.list?.length > 0 &&
               props?.list?.map((menuItem: any) => (
