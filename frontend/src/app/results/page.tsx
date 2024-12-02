@@ -13,6 +13,7 @@ export default function Page() {
       redirect("/");
     }
   }, [data]);
+
   return (
     <div className="wrapper flex flex-col justify-center items-center bg-white m-2.5">
       <div className="container w-2/4	h-4/5	flex h-full w-full bg-white gap-10 pt-40">
@@ -23,31 +24,35 @@ export default function Page() {
           <CustomAccordion
             title="Matched Skills"
             content={
-              <ul>
-                {data.matched_skills.map((val, index) => (
-                  <li key={index}>{val}</li>
-                ))}
-              </ul>
+              data.matched_skills.length > 0
+                ? data.matched_skills.map((val, index) => (
+                    <div className="skills" key={index}>
+                      {val}
+                    </div>
+                  ))
+                : "No Data to display"
             }
           />
           <CustomAccordion
             title="Missing Skills"
             content={
-              <ul>
-                {data.missed_skills.map((val, index) => (
-                  <li key={index}>{val}</li>
-                ))}
-              </ul>
+              data.missed_skills.length > 0
+                ? data.missed_skills.map((val, index) => (
+                    <div className="skills" key={index}>
+                      {val}
+                    </div>
+                  ))
+                : "No Data to display"
             }
           />
           <CustomAccordion
             title="Additional Skills"
             content={
-              <ul>
-                {data.additional_skills.map((val, index) => (
-                  <li key={index}>{val}</li>
-                ))}
-              </ul>
+              data.additional_skills > 0
+                ? data.additional_skills.map((val, index) => (
+                    <div key={index}>{val}</div>
+                  ))
+                : "No Data to display"
             }
           />
         </div>
