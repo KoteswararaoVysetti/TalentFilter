@@ -3,6 +3,16 @@
   .container {
     .skills-wrapper {
       max-width: 40rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .skills {
+      gap: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+      width: fit-content;
+      padding: 0px 10px;
     }
   }
 }
