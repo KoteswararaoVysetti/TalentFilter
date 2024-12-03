@@ -21,7 +21,7 @@ def get_ai_response(role: str, skills: str, resumeData: str) -> str:
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are an Highly skilled HR and Talent Aquisition lead. You need to scan the data of a resume share by an applicant for a {role} role in your company. You are also highly skilled technical person with skills {skills}." + "Provide only a json response that can be converted into object easily in python(example: { \"key1\" : \"value1\", \"key2\" : \"value2\"}) with properties: matching score, matched skills, missed skills, additional skills. Note: don't mention the name 'json' in response",
+                    "content": f"You are an Highly skilled HR and Talent Aquisition lead. You need to scan the data of a resume share by an applicant for a {role} role in your company. You are also highly skilled technical person with skills {skills}." + "Provide only a json response that can be converted into object easily in python(example: { \"key1\" : \"value1\", \"key2\" : \"value2\"}) with properties: matching score, matched skills, missed skills, additional skills and summary(gives breif about applicant's skill(with experience) and how the interviewer should proceed with him. use max of 790 chars). Note: don't mention the name 'json' in response",
                 },
                 {
                     "role": "user",
