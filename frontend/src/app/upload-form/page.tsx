@@ -9,23 +9,31 @@ import { MultiSelectDropdown } from "../components/ui/MultiSelectDropdown";
 import { FileUpload } from "../components/ui/FileUpload/FileUpload";
 import { useCallback, useState } from "react";
 import { Endpoints } from "@/src/common/constants";
+import { useLoader } from "../components/context/LoaderProvider";
 
 const Skills = [
   { id: 1, name: ".Net" },
   { id: 2, name: "Java" },
   { id: 3, name: "React" },
-  { id: 3, name: "SignalR" },
-  { id: 3, name: "Angular" },
-  { id: 3, name: "TypeScript" },
-  { id: 3, name: "Azure" },
-  { id: 3, name: "AWS" },
-  { id: 3, name: "PostgreSQL" },
-  { id: 4, name: "SQL" },
-  { id: 5, name: "Python" },
+  { id: 4, name: "SignalR" },
+  { id: 5, name: "Angular" },
+  { id: 6, name: "TypeScript" },
+  { id: 4, name: "Azure" },
+  { id: 8, name: "AWS" },
+  { id: 9, name: "PostgreSQL" },
+  { id: 10, name: "SQL" },
+  { id: 11, name: "Python" },
+  { id: 12, name: "MonogoDB" },
 ];
+
 const Roles = [
   { id: 1, value: ".Net Fullstack Developer" },
   { id: 2, value: "Python Fullstack Developer" },
+  { id: 3, value: "Java Fullstack Developer" },
+  { id: 4, value: "UI Developer" },
+  { id: 5, value: "PHP Developer" },
+  { id: 6, value: "Ruby on Rails Developer" },
+  { id: 7, value: "Wordpress Developer" },
 ];
 
 export default function UploadForm() {
@@ -34,6 +42,7 @@ export default function UploadForm() {
   const [role, setRole] = useState<string | null>(null);
   const [skills, setSkills] = useState(null);
   const [resume, setResume] = useState<File | null>(null);
+  const { isAnythingLoading, setLoadingState } = useLoader();
 
   const formSubmit = useCallback(async () => {
     if (!role || !skills || !resume) {
@@ -49,15 +58,19 @@ export default function UploadForm() {
         body: formdata,
       };
       try {
+        setLoadingState(true);
         const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}${Endpoints.ProcessResume}`;
         const response = await fetch(url, requestOptions);
 
         if (!response.ok) {
+          setLoadingState(false);
           throw new Error("An error occured");
         }
         const res = await response.json();
+        setLoadingState(false);
         return res;
       } catch (ex) {
+        setLoadingState(false);
         return null;
       }
     }

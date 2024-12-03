@@ -17,8 +17,9 @@ export default function Page() {
   return (
     <div className="wrapper flex flex-col justify-center items-center bg-white m-2.5">
       <div className="container w-2/4	h-4/5	flex h-full w-full bg-white gap-10 pt-40">
-        <div className="basis-2/4 flex justify-center progress-wrapper">
+        <div className="basis-2/4 flex flex-col gap-10 items-center progress-wrapper">
           <ProgressBar progress={data.matching_score} />
+          <div className="summary italic">{data?.summary}</div>
         </div>
         <div className="basis-2/4 flex flex-col h-full skills-wrapper">
           <CustomAccordion
