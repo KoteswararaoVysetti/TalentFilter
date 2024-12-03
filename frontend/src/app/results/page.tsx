@@ -26,10 +26,10 @@ export default function Page() {
             content={
               data.matched_skills.length > 0
                 ? data.matched_skills.map((val, index) => (
-                    <div className="skills" key={index}>
-                      {val}
-                    </div>
-                  ))
+                  <div className="skills" key={index}>
+                    {val}
+                  </div>
+                ))
                 : "No Data to display"
             }
           />
@@ -38,20 +38,20 @@ export default function Page() {
             content={
               data.missed_skills.length > 0
                 ? data.missed_skills.map((val, index) => (
-                    <div className="skills" key={index}>
-                      {val}
-                    </div>
-                  ))
+                  <div className="skills" key={index}>
+                    {val}
+                  </div>
+                ))
                 : "No Data to display"
             }
           />
           <CustomAccordion
             title="Additional Skills"
             content={
-              data.additional_skills > 0
+              data.additional_skills.length > 0
                 ? data.additional_skills.map((val, index) => (
-                    <div key={index}>{val}</div>
-                  ))
+                  <div className="skills" key={index}>{val}</div>
+                ))
                 : "No Data to display"
             }
           />
