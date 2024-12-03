@@ -30,6 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
+        <div className="header">
+          <div className="header-text">Talent Filter</div>
+        </div>
         <StoreProvider>
           <LoaderProvider>{children}</LoaderProvider>
         </StoreProvider>
