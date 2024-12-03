@@ -1,59 +1,61 @@
-"use client";
-import "./style.scss";
-import ProgressBar from "../components/ui/ProgressBar";
-import CustomAccordion from "../components/ui/Accordion";
-import { useAppSelector } from "@/src/lib/hooks";
-import { RootState } from "@/src/lib/store";
-import { useEffect } from "react";
-import { redirect } from "next/navigation";
+'use client';
+import './style.scss';
+import ProgressBar from '../components/ui/ProgressBar';
+import CustomAccordion from '../components/ui/Accordion';
+import { useAppSelector } from '@/src/lib/hooks';
+import { RootState } from '@/src/lib/store';
+import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 export default function Page() {
   const data = useAppSelector((state: RootState) => state.results).value;
   useEffect(() => {
     if (!data.matching_score) {
-      redirect("/");
+      redirect('/');
     }
   }, [data]);
 
   return (
-    <div className="wrapper flex flex-col justify-center items-center bg-white m-2.5">
-      <div className="container w-2/4	h-4/5	flex h-full w-full bg-white gap-10 pt-40">
-        <div className="basis-2/4 flex flex-col gap-10 items-center progress-wrapper">
+    <div className='wrapper flex flex-col justify-center items-center bg-white m-2.5'>
+      <div className='container w-2/4	h-4/5	flex h-full w-full bg-white gap-10 pt-24'>
+        <div className='basis-2/4 flex flex-col gap-10 items-center progress-wrapper'>
           <ProgressBar progress={data.matching_score} />
-          <div className="summary italic">{data?.summary}</div>
+          <div className='summary italic multicolortext'>{data?.summary}</div>
         </div>
-        <div className="basis-2/4 flex flex-col h-full skills-wrapper">
+        <div className='basis-2/4 flex flex-col h-full skills-wrapper'>
           <CustomAccordion
-            title="Matched Skills"
+            title='Matched Skills'
             content={
               data.matched_skills.length > 0
                 ? data.matched_skills.map((val, index) => (
-                  <div className="skills" key={index}>
-                    {val}
-                  </div>
-                ))
-                : "No Data to display"
+                    <div className='skills multicolortext' key={index}>
+                      {val}
+                    </div>
+                  ))
+                : 'No Data to display'
             }
           />
           <CustomAccordion
-            title="Missing Skills"
+            title='Missing Skills'
             content={
               data.missed_skills.length > 0
                 ? data.missed_skills.map((val, index) => (
-                  <div className="skills" key={index}>
-                    {val}
-                  </div>
-                ))
-                : "No Data to display"
+                    <div className='skills multicolortext' key={index}>
+                      {val}
+                    </div>
+                  ))
+                : 'No Data to display'
             }
           />
           <CustomAccordion
-            title="Additional Skills"
+            title='Additional Skills'
             content={
               data.additional_skills.length > 0
                 ? data.additional_skills.map((val, index) => (
-                  <div className="skills" key={index}>{val}</div>
-                ))
-                : "No Data to display"
+                    <div className='skills multicolortext' key={index}>
+                      {val}
+                    </div>
+                  ))
+                : 'No Data to display'
             }
           />
         </div>

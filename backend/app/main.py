@@ -7,7 +7,9 @@ app = FastAPI()
 
 origins = [
     "http://localhost",  # Allow local development
+    "http://localhost:3000",  # Allow local development
     "http://127.0.0.1",
+    "http://127.0.0.1:3000",
     "https://yourfrontenddomain.com",  # Replace with your production frontend domain
 ]
 
