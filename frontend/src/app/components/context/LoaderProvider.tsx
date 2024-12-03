@@ -1,26 +1,18 @@
 "use client";
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import Loader from "../ui/Loader/Loader";
 
 const LoaderContext = createContext<any>(null);
 
 export const LoaderProvider = (props: any) => {
-  // const isAnythingLoading = useSelector((state) => {
-  //   return (
-  //     Object.values((state as any)?.api.queries).some(
-  //       (entry) => (entry as any)?.status === "pending"
-  //     ) &&
-  //     !Object.values((state as any)?.api.queries).some(
-  //       (entry) =>
-  //         (entry as any)?.status === "pending" &&
-  //         (entry as any)?.endpointName === "getAddressBookLastUpdatedStatus"
-  //     )
-  //   );
-  // });
-  const isAnythingLoading = false;
+  const [isAnythingLoading, setIsAnythingLoading] = useState<boolean>(false);
+
+  const setLoadingState = (loading: boolean) => {
+    setIsAnythingLoading(loading);
+  };
   return (
-    <LoaderContext.Provider value={isAnythingLoading}>
+    <LoaderContext.Provider value={{ isAnythingLoading, setLoadingState }}>
       <Loader isLoading={isAnythingLoading} />
       {props?.children}
     </LoaderContext.Provider>

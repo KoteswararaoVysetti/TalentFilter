@@ -9,6 +9,7 @@ import { MultiSelectDropdown } from "../components/ui/MultiSelectDropdown";
 import { FileUpload } from "../components/ui/FileUpload/FileUpload";
 import { useCallback, useState } from "react";
 import { Endpoints } from "@/src/common/constants";
+import { useLoader } from "../components/context/LoaderProvider";
 
 const Skills = [
   { id: 1, name: ".Net" },
@@ -34,6 +35,7 @@ export default function UploadForm() {
   const [role, setRole] = useState<string | null>(null);
   const [skills, setSkills] = useState(null);
   const [resume, setResume] = useState<File | null>(null);
+  const { isAnythingLoading, setLoadingState } = useLoader();
 
   const formSubmit = useCallback(async () => {
     if (!role || !skills || !resume) {
@@ -49,15 +51,19 @@ export default function UploadForm() {
         body: formdata,
       };
       try {
+        setLoadingState(true);
         const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}${Endpoints.ProcessResume}`;
         const response = await fetch(url, requestOptions);
 
         if (!response.ok) {
+          setLoadingState(false);
           throw new Error("An error occured");
         }
         const res = await response.json();
+        setLoadingState(false);
         return res;
       } catch (ex) {
+        setLoadingState(false);
         return null;
       }
     }

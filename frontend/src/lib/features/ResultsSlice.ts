@@ -7,6 +7,7 @@ export const resultsSlice = createSlice({
       matched_skills: [],
       missed_skills: [],
       additional_skills: [],
+      summary: "",
     },
   },
   reducers: {
