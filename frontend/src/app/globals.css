@@ -36,6 +36,13 @@ body {
     }
   }
 }
+
+.multicolortext {
+  background-image: linear-gradient(#9352dd, #1de4c6);
+  color: transparent;
+  background-clip: text;
+}
+
 * {
   box-sizing: border-box;
 }
