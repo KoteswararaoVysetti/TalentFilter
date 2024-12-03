@@ -15,18 +15,25 @@ const Skills = [
   { id: 1, name: ".Net" },
   { id: 2, name: "Java" },
   { id: 3, name: "React" },
-  { id: 3, name: "SignalR" },
-  { id: 3, name: "Angular" },
-  { id: 3, name: "TypeScript" },
-  { id: 3, name: "Azure" },
-  { id: 3, name: "AWS" },
-  { id: 3, name: "PostgreSQL" },
-  { id: 4, name: "SQL" },
-  { id: 5, name: "Python" },
+  { id: 4, name: "SignalR" },
+  { id: 5, name: "Angular" },
+  { id: 6, name: "TypeScript" },
+  { id: 4, name: "Azure" },
+  { id: 8, name: "AWS" },
+  { id: 9, name: "PostgreSQL" },
+  { id: 10, name: "SQL" },
+  { id: 11, name: "Python" },
+  { id: 12, name: "MonogoDB" },
 ];
+
 const Roles = [
   { id: 1, value: ".Net Fullstack Developer" },
   { id: 2, value: "Python Fullstack Developer" },
+  { id: 3, value: "Java Fullstack Developer" },
+  { id: 4, value: "UI Developer" },
+  { id: 5, value: "PHP Developer" },
+  { id: 6, value: "Ruby on Rails Developer" },
+  { id: 7, value: "Wordpress Developer" },
 ];
 
 export default function UploadForm() {
