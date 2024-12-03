@@ -7,7 +7,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",  # Allow local development
-    "http://localhost:3000",  # Allow Next.js or other frontend running on port 3000
+    "http://127.0.0.1",
     "https://yourfrontenddomain.com",  # Replace with your production frontend domain
 ]
 
