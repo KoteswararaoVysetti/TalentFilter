@@ -10,6 +10,7 @@ export default function CustomAccordion(props: any) {
       <Accordion
         onChange={props.onChange}
         expanded={props.expanded}
+        defaultExpanded
         sx={{
           "& .MuiAccordionDetails-root": {
             display: "flex",

@@ -13,8 +13,8 @@ const ProgressBar = ({ progress }: any) => {
       style={{
         position: "relative",
         display: "inline-block",
-        width: "300px",
-        height: "150px",
+        width: "350px",
+        height: "200px",
       }}
     >
       <svg
@@ -55,7 +55,7 @@ const ProgressBar = ({ progress }: any) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          fontSize: "18px",
+          fontSize: "35px",
           fontWeight: "bold",
           color: "#333",
         }}
