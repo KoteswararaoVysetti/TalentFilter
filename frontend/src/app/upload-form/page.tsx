@@ -24,6 +24,7 @@ const Skills = [
   { id: 10, name: "SQL" },
   { id: 11, name: "Python" },
   { id: 12, name: "MonogoDB" },
+  { id: 13, name: "Ruby on Rails" }
 ];
 
 const Roles = [
